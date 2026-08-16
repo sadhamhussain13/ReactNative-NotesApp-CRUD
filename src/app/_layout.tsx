@@ -1,18 +1,39 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { Stack } from 'expo-router';
+import { NotesProvider } from '@/context/NotesContext';
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
-
-SplashScreen.preventAutoHideAsync();
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <NotesProvider>
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{
+            title: 'My Notes',
+          }}
+        />
+
+        <Stack.Screen
+          name="create"
+          options={{
+            title: 'New Note',
+          }}
+        />
+
+        <Stack.Screen
+        name="view"
+        options={{
+          title: 'View Note',
+        }}
+      />
+
+      <Stack.Screen
+        name="edit"
+        options={{
+          title: 'Edit Note',
+        }}
+      />
+
+      </Stack>
+    </NotesProvider>
   );
 }
