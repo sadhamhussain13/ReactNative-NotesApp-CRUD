@@ -57,6 +57,7 @@ notes-app/
 ├── tsconfig.json
 ├── app.json
 └── README.md
+```
 
 ## Get started
 
